@@ -1,0 +1,73 @@
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.dayRate = dayRate;exports.monthRate = monthRate;exports.daysInBudget = daysInBudget; // @ts-check
+//
+// ☝🏽 The line above enables type checking for this file. Various IDEs interpret
+// the @ts-check directive. It will give you helpful autocompletion on the web
+// and supported IDEs when implementing this exercise. You don't need to
+// understand types, JSDoc, or TypeScript in order to complete this JavaScript
+// exercise, and can completely ignore this comment block and directive.
+
+// 👋🏽 Hi again!
+//
+// A quick reminder about exercise stubs:
+//
+// 💡 You're allowed to completely clear any stub before you get started. Often
+// we recommend using the stub, because they are already set-up correctly to
+// work with the tests, which you can find in ./freelancer-rates.spec.js.
+//
+// 💡 You don't need to write JSDoc comment blocks yourself; it is not expected
+// in idiomatic JavaScript, but some companies and style-guides do enforce them.
+//
+// Get those rates calculated!
+
+/**
+ * The day rate, given a rate per hour
+ *
+ * @param {number} ratePerHour
+ * @returns {number} the rate per day
+ */
+function dayRate(ratePerHour) {
+  return 8 * ratePerHour;
+}
+
+function monthRateWithoutDiscount(ratePerHour) {
+  return 22 * dayRate(ratePerHour);
+}
+
+/**
+ * Calculates the rate per month
+ *
+ * @param {number} ratePerHour
+ * @param {number} discount for example 20% written as 0.2
+ * @returns {number} the rounded up monthly rate
+ */
+function monthRate(ratePerHour, discount) {
+  let discountedRate = applyDiscount(monthRateWithoutDiscount(ratePerHour), discount);
+  return Math.ceil(discountedRate);
+}
+
+/**
+ * Calculates the number of days in a budget, rounded down
+ *
+ * @param {number} budget the total budget
+ * @param {number} ratePerHour the rate per hour
+ * @param {number} discount to apply, example 20% written as 0.2
+ * @returns {number} the number of days
+ */
+function daysInBudget(budget, ratePerHour, discount) {
+  let totalDays = budget / dayRate(applyDiscount(ratePerHour, discount));
+  return Math.floor(totalDays);
+}
+
+/**
+ * Applies a discount to the value
+ *
+ * @param {number} value
+ * @param {number} percentage for example 20% written as 0.2
+ * @returns {number} the discounted value
+ */
+function applyDiscount(value, percentage) {
+  return value - value * percentage;
+}
+
+dayRate(34);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2ZyZWVsYW5jZXItcmF0ZXMuanMiXSwibmFtZXMiOlsiZGF5UmF0ZSIsInJhdGVQZXJIb3VyIiwibW9udGhSYXRlV2l0aG91dERpc2NvdW50IiwibW9udGhSYXRlIiwiZGlzY291bnQiLCJkaXNjb3VudGVkUmF0ZSIsImFwcGx5RGlzY291bnQiLCJNYXRoIiwiY2VpbCIsImRheXNJbkJ1ZGdldCIsImJ1ZGdldCIsInRvdGFsRGF5cyIsImZsb29yIiwidmFsdWUiLCJwZXJjZW50YWdlIl0sIm1hcHBpbmdzIjoid0tBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLFNBQVNBLE9BQVQsQ0FBaUJDLFdBQWpCLEVBQThCO0FBQ25DLFNBQU8sSUFBSUEsV0FBWDtBQUNEOztBQUVELFNBQVNDLHdCQUFULENBQWtDRCxXQUFsQyxFQUErQztBQUM3QyxTQUFPLEtBQUtELE9BQU8sQ0FBQ0MsV0FBRCxDQUFuQjtBQUNEOztBQUVEO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ08sU0FBU0UsU0FBVCxDQUFtQkYsV0FBbkIsRUFBZ0NHLFFBQWhDLEVBQTBDO0FBQy9DLE1BQUlDLGNBQWMsR0FBR0MsYUFBYSxDQUFDSix3QkFBd0IsQ0FBQ0QsV0FBRCxDQUF6QixFQUF3Q0csUUFBeEMsQ0FBbEM7QUFDQSxTQUFPRyxJQUFJLENBQUNDLElBQUwsQ0FBVUgsY0FBVixDQUFQO0FBQ0Q7O0FBRUQ7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLFNBQVNJLFlBQVQsQ0FBc0JDLE1BQXRCLEVBQThCVCxXQUE5QixFQUEyQ0csUUFBM0MsRUFBcUQ7QUFDMUQsTUFBSU8sU0FBUyxHQUFHRCxNQUFNLEdBQUdWLE9BQU8sQ0FBQ00sYUFBYSxDQUFDTCxXQUFELEVBQWFHLFFBQWIsQ0FBZCxDQUFoQztBQUNBLFNBQU9HLElBQUksQ0FBQ0ssS0FBTCxDQUFXRCxTQUFYLENBQVA7QUFDRDs7QUFFRDtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLFNBQVNMLGFBQVQsQ0FBdUJPLEtBQXZCLEVBQThCQyxVQUE5QixFQUEwQztBQUN4QyxTQUFPRCxLQUFLLEdBQUlBLEtBQUssR0FBR0MsVUFBeEI7QUFDRDs7QUFFRGQsT0FBTyxDQUFDLEVBQUQsQ0FBUCIsInNvdXJjZXNDb250ZW50IjpbIi8vIEB0cy1jaGVja1xuLy9cbi8vIOKYnfCfj70gVGhlIGxpbmUgYWJvdmUgZW5hYmxlcyB0eXBlIGNoZWNraW5nIGZvciB0aGlzIGZpbGUuIFZhcmlvdXMgSURFcyBpbnRlcnByZXRcbi8vIHRoZSBAdHMtY2hlY2sgZGlyZWN0aXZlLiBJdCB3aWxsIGdpdmUgeW91IGhlbHBmdWwgYXV0b2NvbXBsZXRpb24gb24gdGhlIHdlYlxuLy8gYW5kIHN1cHBvcnRlZCBJREVzIHdoZW4gaW1wbGVtZW50aW5nIHRoaXMgZXhlcmNpc2UuIFlvdSBkb24ndCBuZWVkIHRvXG4vLyB1bmRlcnN0YW5kIHR5cGVzLCBKU0RvYywgb3IgVHlwZVNjcmlwdCBpbiBvcmRlciB0byBjb21wbGV0ZSB0aGlzIEphdmFTY3JpcHRcbi8vIGV4ZXJjaXNlLCBhbmQgY2FuIGNvbXBsZXRlbHkgaWdub3JlIHRoaXMgY29tbWVudCBibG9jayBhbmQgZGlyZWN0aXZlLlxuXG4vLyDwn5GL8J+PvSBIaSBhZ2FpbiFcbi8vXG4vLyBBIHF1aWNrIHJlbWluZGVyIGFib3V0IGV4ZXJjaXNlIHN0dWJzOlxuLy9cbi8vIPCfkqEgWW91J3JlIGFsbG93ZWQgdG8gY29tcGxldGVseSBjbGVhciBhbnkgc3R1YiBiZWZvcmUgeW91IGdldCBzdGFydGVkLiBPZnRlblxuLy8gd2UgcmVjb21tZW5kIHVzaW5nIHRoZSBzdHViLCBiZWNhdXNlIHRoZXkgYXJlIGFscmVhZHkgc2V0LXVwIGNvcnJlY3RseSB0b1xuLy8gd29yayB3aXRoIHRoZSB0ZXN0cywgd2hpY2ggeW91IGNhbiBmaW5kIGluIC4vZnJlZWxhbmNlci1yYXRlcy5zcGVjLmpzLlxuLy9cbi8vIPCfkqEgWW91IGRvbid0IG5lZWQgdG8gd3JpdGUgSlNEb2MgY29tbWVudCBibG9ja3MgeW91cnNlbGY7IGl0IGlzIG5vdCBleHBlY3RlZFxuLy8gaW4gaWRpb21hdGljIEphdmFTY3JpcHQsIGJ1dCBzb21lIGNvbXBhbmllcyBhbmQgc3R5bGUtZ3VpZGVzIGRvIGVuZm9yY2UgdGhlbS5cbi8vXG4vLyBHZXQgdGhvc2UgcmF0ZXMgY2FsY3VsYXRlZCFcblxuLyoqXG4gKiBUaGUgZGF5IHJhdGUsIGdpdmVuIGEgcmF0ZSBwZXIgaG91clxuICpcbiAqIEBwYXJhbSB7bnVtYmVyfSByYXRlUGVySG91clxuICogQHJldHVybnMge251bWJlcn0gdGhlIHJhdGUgcGVyIGRheVxuICovXG5leHBvcnQgZnVuY3Rpb24gZGF5UmF0ZShyYXRlUGVySG91cikge1xuICByZXR1cm4gOCAqIHJhdGVQZXJIb3VyO1xufVxuXG5mdW5jdGlvbiBtb250aFJhdGVXaXRob3V0RGlzY291bnQocmF0ZVBlckhvdXIpIHtcbiAgcmV0dXJuIDIyICogZGF5UmF0ZShyYXRlUGVySG91cik7XG59XG5cbi8qKlxuICogQ2FsY3VsYXRlcyB0aGUgcmF0ZSBwZXIgbW9udGhcbiAqXG4gKiBAcGFyYW0ge251bWJlcn0gcmF0ZVBlckhvdXJcbiAqIEBwYXJhbSB7bnVtYmVyfSBkaXNjb3VudCBmb3IgZXhhbXBsZSAyMCUgd3JpdHRlbiBhcyAwLjJcbiAqIEByZXR1cm5zIHtudW1iZXJ9IHRoZSByb3VuZGVkIHVwIG1vbnRobHkgcmF0ZVxuICovXG5leHBvcnQgZnVuY3Rpb24gbW9udGhSYXRlKHJhdGVQZXJIb3VyLCBkaXNjb3VudCkge1xuICBsZXQgZGlzY291bnRlZFJhdGUgPSBhcHBseURpc2NvdW50KG1vbnRoUmF0ZVdpdGhvdXREaXNjb3VudChyYXRlUGVySG91ciksIGRpc2NvdW50KTtcbiAgcmV0dXJuIE1hdGguY2VpbChkaXNjb3VudGVkUmF0ZSk7XG59XG5cbi8qKlxuICogQ2FsY3VsYXRlcyB0aGUgbnVtYmVyIG9mIGRheXMgaW4gYSBidWRnZXQsIHJvdW5kZWQgZG93blxuICpcbiAqIEBwYXJhbSB7bnVtYmVyfSBidWRnZXQgdGhlIHRvdGFsIGJ1ZGdldFxuICogQHBhcmFtIHtudW1iZXJ9IHJhdGVQZXJIb3VyIHRoZSByYXRlIHBlciBob3VyXG4gKiBAcGFyYW0ge251bWJlcn0gZGlzY291bnQgdG8gYXBwbHksIGV4YW1wbGUgMjAlIHdyaXR0ZW4gYXMgMC4yXG4gKiBAcmV0dXJucyB7bnVtYmVyfSB0aGUgbnVtYmVyIG9mIGRheXNcbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGRheXNJbkJ1ZGdldChidWRnZXQsIHJhdGVQZXJIb3VyLCBkaXNjb3VudCkge1xuICBsZXQgdG90YWxEYXlzID0gYnVkZ2V0IC8gZGF5UmF0ZShhcHBseURpc2NvdW50KHJhdGVQZXJIb3VyLGRpc2NvdW50KSk7XG4gIHJldHVybiBNYXRoLmZsb29yKHRvdGFsRGF5cyk7XG59XG5cbi8qKlxuICogQXBwbGllcyBhIGRpc2NvdW50IHRvIHRoZSB2YWx1ZVxuICpcbiAqIEBwYXJhbSB7bnVtYmVyfSB2YWx1ZVxuICogQHBhcmFtIHtudW1iZXJ9IHBlcmNlbnRhZ2UgZm9yIGV4YW1wbGUgMjAlIHdyaXR0ZW4gYXMgMC4yXG4gKiBAcmV0dXJucyB7bnVtYmVyfSB0aGUgZGlzY291bnRlZCB2YWx1ZVxuICovXG5mdW5jdGlvbiBhcHBseURpc2NvdW50KHZhbHVlLCBwZXJjZW50YWdlKSB7XG4gIHJldHVybiB2YWx1ZSAtICh2YWx1ZSAqIHBlcmNlbnRhZ2UpO1xufVxuXG5kYXlSYXRlKDM0KTsiXX0=
